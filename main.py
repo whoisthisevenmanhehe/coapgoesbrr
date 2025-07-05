@@ -97,17 +97,22 @@ selected_round = st.sidebar.selectbox("Select Round", rounds, index=rounds.index
 institutes = sorted(set(i for val in df["Final Accepted Institute"].unique() for i in val.split(", ") if i))
 selected_institute = st.sidebar.selectbox("Select Final Institute", ["All"] + institutes)
 
+categories = ["All"] + sorted(df["Category"].dropna().unique())
+selected_category = st.sidebar.selectbox("Select Category", categories)
+
 min_score, max_score = int(df["GATE Score"].min()), int(df["GATE Score"].max())
 score_range = st.sidebar.slider("GATE Score Range", min_score, max_score, (min_score, max_score))
 
 st.sidebar.markdown("""
 <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
-    <button style="background-color:#f63366;color:white;border:none;padding:8px 16px;border-radius:8px;font-weight:bold;cursor:pointer;">I am telling you don't click me</button>
+    <button style="background-color:#f63366;color:white;border:none;padding:8px 16px;border-radius:8px;font-weight:bold;cursor:pointer;">I am telling you, don't click me</button>
 </a>
 """, unsafe_allow_html=True)
 
 filtered_df = df[df["Round"] == selected_round]
 filtered_df = filtered_df[filtered_df["GATE Score"].between(score_range[0], score_range[1])]
+if selected_category != "All":
+    filtered_df = filtered_df[filtered_df["Category"] == selected_category]
 if selected_institute != "All":
     filtered_df = filtered_df[filtered_df["Final Accepted Institute"].str.contains(selected_institute)]
 
