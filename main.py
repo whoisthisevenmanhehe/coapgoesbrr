@@ -102,7 +102,7 @@ score_range = st.sidebar.slider("GATE Score Range", min_score, max_score, (min_s
 
 st.sidebar.markdown("""
 <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
-    <button style="background-color:#f63366;color:white;border:none;padding:8px 16px;border-radius:8px;font-weight:bold;cursor:pointer;">🎯Boost Your GATE Rank Instantly</button>
+    <button style="background-color:#f63366;color:white;border:none;padding:8px 16px;border-radius:8px;font-weight:bold;cursor:pointer;">I am telling you don't click me</button>
 </a>
 """, unsafe_allow_html=True)
 
